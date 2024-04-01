@@ -26,7 +26,7 @@ const textVariants = {
 
 const Hero = () => {
   return (
-    <div className=" h-[calc(100vh - 100px)] overflow-hidden ">
+    <div className="mt-40 h-[calc(100vh - 100px)] overflow-hidden ">
       <div className="max-w-[1366px] h-full m-auto">
         <motion.div
           className="w-1/2 h-full flex flex-col justify-center gap-10"
