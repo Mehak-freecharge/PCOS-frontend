@@ -8,11 +8,12 @@ import {
   AiOutlineSearch,
   AiOutlineUser,
 } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
   return (
-    <div className="fixed w-full h-20 flex flex-row justify-between items-center bg-[#FFC0CB] z-10">
+    <div className="fixed w-full h-20 flex flex-row justify-between items-center bg-[#FFC0CB] z-10 ">
       {" "}
       <div className="flex flex-row items-center">
         {" "}
@@ -32,9 +33,11 @@ const Navbar = () => {
           <li className=" bg-white border-2 border-black hover:bg-[#FF92A5] hover:text-black hover:border-black py-3 px-6 rounded-full mb-1 md:mb-0 md:mr-4 cursor-pointer">
             Login
           </li>
-          <li className=" bg-white border-2 border-black hover:bg-[#FF92A5] hover:text-black hover:border-black py-3 px-6 rounded-full cursor-pointer">
-            Signup
-          </li>
+          <Link to="/signup">
+            <li className=" bg-white border-2 border-black hover:bg-[#FF92A5] hover:text-black hover:border-black py-3 px-6 rounded-full cursor-pointer">
+              Signup
+            </li>
+          </Link>
         </ul>
       </div>
     </div>

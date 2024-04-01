@@ -25,7 +25,7 @@ const textVariants = {
 
 const Hero = () => {
   return (
-    <div className="overflow-hidden justify-center items-center flex flex-col">
+    <div className="justify-center items-center flex flex-col">
       <div className="max-w-[1366px] h-full m-auto flex flex-col md:flex-row-reverse gap-10">
         <div className="h-full top-0 right-0 md:w-1/2 mt-10">
           <img

@@ -1,25 +1,17 @@
+import { Outlet } from "react-router-dom";
 import "./App.css";
-import Explore from "./components/Explore";
-import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import Search from "./components/Search";
+import Footer from "./components/Footer";
 
 function App() {
   return (
-    <div>
-      <section id="Home">
-        {" "}
-        <Navbar />
-        <Hero />
-      </section>
-      <section id="Explore">
-        <Explore />
-      </section>
-      <section id="Search">
-        <Search />
-      </section>
-      {/* <Form /> */}
-    </div>
+    <>
+      <Navbar />
+      <div className="min-h-screen">
+        <Outlet />
+      </div>
+      <Footer />
+    </>
   );
 }
 
