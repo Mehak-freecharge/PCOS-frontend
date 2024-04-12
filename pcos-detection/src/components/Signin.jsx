@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../auth/AuthContext";
 
 const Signin = () => {
+  const { login } = useContext(AuthContext);
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
@@ -31,6 +34,8 @@ const Signin = () => {
       });
 
       if (response.ok) {
+        const userData = await response.json();
+        login(userData);
         alert("Login Successful!");
         navigate("/");
       } else {
@@ -83,7 +88,6 @@ const Signin = () => {
               required
             />
           </div>
-          {/* Display error message */}
           {errorMessage && <p className="text-red-500">{errorMessage}</p>}
           <button
             type="submit"

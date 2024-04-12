@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../auth/AuthContext";
 
 const Signup = () => {
+  const { login } = useContext(AuthContext);
+
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -12,7 +15,6 @@ const Signup = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    // Implement signup logic here (e.g., call API)
     const formData = new FormData();
     formData.append("username", username);
     formData.append("email", email);
@@ -27,6 +29,14 @@ const Signup = () => {
           body: formData,
         }
       );
+      const userData = {
+        username,
+        email,
+        profileImage: URL.createObjectURL(profileImage),
+      };
+      console.log(userData);
+      login(userData);
+
       if (!response.ok) {
         throw new Error("Signup failed");
       }
@@ -37,7 +47,6 @@ const Signup = () => {
       setLoading(false);
     }
     console.log({ username, email, password, profileImage });
-    // response.data && window.location.replace("/login");
   };
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
@@ -61,13 +70,6 @@ const Signup = () => {
             placeholder="Enter your username..."
             onChange={(e) => setUsername(e.target.value)}
           />
-          {/* <label>Fullname</label>
-          <input
-            className="registerInput"
-            type="text"
-            placeholder="Enter your fullname..."
-            onChange={(e) => setFullname(e.target.value)}
-          /> */}
           <label>Email</label>
           <input
             className="registerInput"
@@ -82,10 +84,7 @@ const Signup = () => {
             placeholder="Enter your password..."
             onChange={(e) => setPassword(e.target.value)}
           />
-          {/* Form fields */}
-          {/* Error message */}
           {error && <p className="text-red-500">{error}</p>}
-          {/* Sign up button */}
           <div>
             <button
               type="submit"
