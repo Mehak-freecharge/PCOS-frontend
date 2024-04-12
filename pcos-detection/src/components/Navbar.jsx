@@ -35,6 +35,13 @@ const Navbar = () => {
             alt="Profile"
             className="rounded-full"
           />
+          <Link
+            to="/form"
+            className="bg-white border-2 border-black hover:bg-[#FF92A5] hover:text-black hover:border-black py-3 px-6 rounded-full mb-1 md:mb-0 md:mr-4 cursor-pointer"
+          >
+            Predict PCOS
+          </Link>
+
           <button
             onClick={logout}
             className="bg-white border-2 border-black hover:bg-[#FF92A5] hover:text-black hover:border-black py-3 px-6 rounded-full cursor-pointer"

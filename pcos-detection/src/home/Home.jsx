@@ -5,8 +5,12 @@ import Explore from "../components/Explore";
 const Home = () => {
   return (
     <div>
-      <Hero />
-      <Explore />
+      <div id="Home">
+        <Hero />
+      </div>
+      <div id="Explore">
+        <Explore />
+      </div>
     </div>
   );
 };
