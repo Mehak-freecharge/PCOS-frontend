@@ -1,6 +1,9 @@
 import React, { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext";
+import loginImage from "../images/loginImage.png";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const Signin = () => {
   const { login } = useContext(AuthContext);
@@ -21,6 +24,11 @@ const Signin = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (password === "" || email === "") {
+      toast.error("Fill all fields!");
+      return;
+    }
+
     try {
       const response = await fetch("http://localhost:5000/api/v1/users/login", {
         method: "POST",
@@ -36,13 +44,23 @@ const Signin = () => {
       if (response.ok) {
         const userData = await response.json();
         login(userData);
-        alert("Login Successful!");
-        navigate("/");
+        toast.success("Login successful");
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
+
+        // alert("Login Successful!");
+        // navigate("/");
       } else {
-        alert(
-          "Failed to Login, Invalid credentials, please first signup if you do not have an account or correct your credentials"
-        );
-        navigate("/register");
+        // alert(
+        //   "Failed to Login, Invalid credentials, please first signup if you do not have an account or correct your credentials"
+        // );
+        toast.error("Error occurred while logging");
+        setTimeout(() => {
+          navigate("/register");
+        }, 1500);
+
+        // navigate("/register");
       }
     } catch (err) {
       console.log(err);
@@ -50,11 +68,20 @@ const Signin = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center w-full dark:bg-gray-950">
-      <div className="bg-white dark:bg-gray-900 shadow-md rounded-lg px-8 py-6 max-w-md">
+    <div className="min-h-screen flex items-center justify-center w-full lg:pr-40 bg-pink-200">
+      <div className="mt-20 lg:block hidden">
+        <img src={loginImage} alt="" width={600} height={500} />
+      </div>
+
+      <div className="bg-white dark:bg-pink-800 shadow-md rounded-lg px-20 py-20 max-w-md mt-20">
         <h1 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">
           Welcome Back!
         </h1>
+
+        {/* <div>
+          <img src={loginImage} alt="" width={500} height={500} />
+        </div> */}
+
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
             <label
@@ -66,7 +93,7 @@ const Signin = () => {
             <input
               type="email"
               id="email"
-              className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500"
               onChange={handleemailChange}
               placeholder="your@email.com"
               required
@@ -82,7 +109,7 @@ const Signin = () => {
             <input
               type="password"
               id="password"
-              className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
+              className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500"
               placeholder="Enter your password"
               onChange={handlePasswordChange}
               required
@@ -91,12 +118,21 @@ const Signin = () => {
           {errorMessage && <p className="text-red-500">{errorMessage}</p>}
           <button
             type="submit"
-            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            className="w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
           >
             Login
           </button>
+          <div className="text-white">
+            <Link to="/register">
+              <h1 className="ml-4">
+                Don&apos;t have an account? <br />
+              </h1>
+              <h1 className="ml-10">Register now.</h1>
+            </Link>
+          </div>
         </form>
       </div>
+      <ToastContainer />
     </div>
   );
 };

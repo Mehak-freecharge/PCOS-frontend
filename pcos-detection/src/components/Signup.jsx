@@ -1,6 +1,9 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../auth/AuthContext";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import signImage from "../images/signImage.jpg";
 
 const Signup = () => {
   const { login } = useContext(AuthContext);
@@ -11,6 +14,7 @@ const Signup = () => {
   const [profileImage, setProfileImage] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -36,50 +40,73 @@ const Signup = () => {
       };
       console.log(userData);
       login(userData);
-
-      if (!response.ok) {
-        throw new Error("Signup failed");
+      if (response.ok) {
+        toast.success("Successfully registered the user");
+        setTimeout(() => {
+          navigate("/");
+        }, 1500);
+      } else {
+        toast.error("Error occured while registering");
+        return;
       }
-      response.data && window.location.replace("/login");
     } catch (error) {
-      setError("Signup failed. Please try again later.");
-    } finally {
-      setLoading(false);
+      console.log(error);
     }
+
+    //   if (!response.ok) {
+    //     throw new Error("Signup failed");
+    //   }
+    //   response.data && window.location.replace("/login");
+    // } catch (error) {
+    //   setError("Signup failed. Please try again later.");
+    // } finally {
+    //   setLoading(false);
+    // }
     console.log({ username, email, password, profileImage });
   };
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8">
+    <div className="min-h-screen flex items-center justify-center w-full lg:pr-40 gap-10">
+      <div className="lg:block hidden">
+        <img src={signImage} alt="" width={500} />
+      </div>
+      <div className="bg-white dark:bg-pink-800 shadow-md rounded-lg px-20 py-10 max-w-md mt-20">
         <div>
-          <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <h2 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">
             Sign up for an account
           </h2>
         </div>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
-          <label>Profile Image</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Profile Image
+          </label>
           <input
-            className="registerInput"
+            className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500"
             type="file"
             onChange={(e) => setProfileImage(e.target.files[0])}
           />
-          <label>Username</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Username
+          </label>
           <input
-            className="registerInput"
+            className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500"
             type="text"
             placeholder="Enter your username..."
             onChange={(e) => setUsername(e.target.value)}
           />
-          <label>Email</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Email
+          </label>
           <input
-            className="registerInput"
+            className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500"
             type="email"
             placeholder="Enter your email..."
             onChange={(e) => setEmail(e.target.value)}
           />
-          <label>Password</label>
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+            Password
+          </label>
           <input
-            className="registerInput"
+            className="shadow-sm rounded-md w-full px-3 py-2 border border-gray-300 focus:outline-none focus:ring-pink-500 focus:border-pink-500"
             type="password"
             placeholder="Enter your password..."
             onChange={(e) => setPassword(e.target.value)}
@@ -88,19 +115,23 @@ const Signup = () => {
           <div>
             <button
               type="submit"
-              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+              className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-pink-600 hover:bg-pink-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-pink-500"
               disabled={loading}
             >
               {loading ? "Signing up..." : "Sign up"}
             </button>
           </div>
         </form>
-        <button className="registerLoginButton">
-          <Link className="link" to="/login">
-            LOGIN
+        <div className="text-white lg:ml-10">
+          <Link to="/login">
+            <h1 className="ml-4">
+              Already have an account? <br />
+            </h1>
+            <h1 className="ml-10">Login now.</h1>
           </Link>
-        </button>
+        </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };
