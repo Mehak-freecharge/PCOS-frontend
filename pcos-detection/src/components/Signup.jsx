@@ -69,7 +69,7 @@ const Signup = () => {
       <div className="lg:block hidden">
         <img src={signImage} alt="" width={500} />
       </div>
-      <div className="bg-white dark:bg-pink-800 shadow-md rounded-lg px-20 py-10 max-w-md mt-20">
+      <div className="dark:bg-pink-800 shadow-md rounded-lg px-20 py-10 max-w-md mt-20">
         <div>
           <h2 className="text-2xl font-bold text-center mb-4 dark:text-gray-200">
             Sign up for an account

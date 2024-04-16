@@ -5,6 +5,7 @@ import Home from "../home/Home";
 import Signin from "../components/Signin";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Form from "../components/Form";
+import Detail from "../components/Detail";
 
 const router = createBrowserRouter([
   {
@@ -31,6 +32,10 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
       },
+      {
+        path:"/detail/:id",
+        element:<Detail />,
+      }
     ],
   },
 ]);
