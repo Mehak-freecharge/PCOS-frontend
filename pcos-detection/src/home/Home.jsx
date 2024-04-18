@@ -2,10 +2,11 @@ import Hero from "../components/Hero";
 import Explore from "../components/Explore";
 import Search from "../components/Search";
 import Lifestyle from "../components/Lifestyle";
-import Forum from "../components/Forum";
+import Forum from "../components/DocAsst";
 import Contact from "../components/Contact";
 
 import React, { useEffect, useRef, useState } from "react";
+import DocAsst from "../components/DocAsst";
 
 const RevealOnScroll = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -43,25 +44,26 @@ const Home = () => {
       <div id="Home">
         <Hero />
       </div>
-      {/* <RevealOnScroll>
-        <div id="Search">
-          <Search />
-        </div>
-      </RevealOnScroll> */}
       <RevealOnScroll>
         <div id="Explore">
           <Explore />
         </div>
       </RevealOnScroll>
-      <div id="Lifestyle">
-        <Lifestyle />
-      </div>
-      <div id="Forum">
-        <Forum />
-      </div>
-      <div id="Contact">
-        <Contact />
-      </div>
+      <RevealOnScroll>
+        <div id="Lifestyle">
+          <Lifestyle />
+        </div>
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <div id="Doctor">
+          <DocAsst />
+        </div>
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <div id="Contact">
+          <Contact />
+        </div>
+      </RevealOnScroll>
     </div>
   );
 };

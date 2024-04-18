@@ -37,7 +37,7 @@ const details = [
 const Explore = () => {
   return (
     <>
-      <div className="w-full h-[80vh] lg:px-20">
+      <div className="w-full lg:px-20">
         <div className="">
           <h1 className="text-3xl font-bold text-gray-700">
             Explore topics related to PCOS
@@ -57,21 +57,18 @@ const Explore = () => {
                 key={d.id}
                 className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:border-gray-900  dark:bg-gray-500"
               >
-                <a href="#">
-                  <img
-                    className="rounded-t-lg w-full h-[35vh]"
-                    src={d.coverImg}
-                    alt=""
-                    width={250}
-                    height={250}
-                  />
-                </a>
+                <img
+                  className="rounded-t-lg w-full h-[35vh]"
+                  src={d.coverImg}
+                  alt=""
+                  width={250}
+                  height={250}
+                />
+                ={" "}
                 <div class="p-5">
-                  <a href="#">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                      {d.title}
-                    </h5>
-                  </a>
+                  <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                    {d.title}
+                  </h5>
 
                   <Link
                     to={`/detail/${d.id}`}
