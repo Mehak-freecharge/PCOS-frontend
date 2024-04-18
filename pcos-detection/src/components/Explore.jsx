@@ -63,8 +63,7 @@ const Explore = () => {
                   alt=""
                   width={250}
                   height={250}
-                />
-                ={" "}
+                />{" "}
                 <div class="p-5">
                   <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                     {d.title}
