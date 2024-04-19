@@ -1,8 +1,14 @@
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+// import Slider from "react-slick";
+// import "slick-carousel/slick/slick.css";
+// import "slick-carousel/slick/slick-theme.css";
 import { color } from "framer-motion";
 import { Link } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/pagination";
+import { Pagination } from "swiper/modules";
+import { FaStar } from "react-icons/fa6";
+import { Avatar } from "flowbite-react";
 
 const data = [
   {
@@ -44,29 +50,47 @@ const data = [
 ];
 
 const DocAsst = () => {
-  const settings = {
-    dots: true,
-    infinite: true,
-    speed: 500,
-    slidesToShow: 3,
-    slidesToScroll: 1,
-  };
-
   return (
-    <div className="">
-      <h1 className="text-5xl text-gray-700 px-20">Ask Doctors</h1>
-      <div className="w-3/4 m-auto">
-        <div className="mt-20">
-          <Slider {...settings}>
-            {data.map((d) => (
-              <div key={d.name} className=" h-[450px] text-black rounded-xl">
+    <div className="my-12 px-4 lg:px-24 mb-10 leading-snug">
+      <h1 className="text-5xl text-gray-700">Ask Doctors</h1>
+      <div>
+        <Swiper
+          slidesPerView={1}
+          spaceBetween={30}
+          pagination={{
+            clickable: true,
+          }}
+          breakpoints={{
+            640: {
+              slidesPerView: 1,
+              spaceBetween: 20,
+            },
+            768: {
+              slidesPerView: 2,
+              spaceBetween: 40,
+            },
+            1024: {
+              slidesPerView: 3,
+              spaceBetween: 50,
+            },
+          }}
+          modules={[Pagination]}
+          className="mySwiper"
+        >
+          {data.map((d) => (
+            <SwiperSlide
+              className="shadow-2xl bg-white py-8 px-4 md:m-5 rounded-lg border"
+              key={d.name}
+            >
+              <div className="space-y-6">
                 <div className="h-56 bg-pink-500 flex justify-center items-center rounded-t-xl">
                   <img src={d.img} alt="" className="h-44 w-44 rounded-full" />
                 </div>
 
                 <div className="flex flex-col items-center justify-center gap-4 p-4">
-                  <p className="text-xl font-semibold">{d.name}</p>
-                  <p className="text-center">{d.review}</p>
+                  <h5 className="text-lg font-medium">{d.name}</h5>
+
+                  <p className="mb-5">{d.review}</p>
                   <Link
                     to={d.link}
                     target="_blank"
@@ -76,9 +100,9 @@ const DocAsst = () => {
                   </Link>
                 </div>
               </div>
-            ))}
-          </Slider>
-        </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
