@@ -73,7 +73,10 @@ const Form = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto">
+    <div className="max-w-lg mx-auto py-14">
+      <div className="py-10 text-3xl text-gray-500">
+        <h1>Complete the form to Predict PCOS : </h1>
+      </div>
       <form onSubmit={handleSubmit} className="space-y-4">
         {Object.entries(formData).map(([key, value]) => (
           <div key={key}>
@@ -84,7 +87,8 @@ const Form = () => {
               type="text"
               id={key}
               name={key}
-              value={value}
+              placeholder={value}
+              // value={value}
               onChange={handleChange}
               className="block w-full mt-1 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:border-blue-500"
             />
@@ -92,7 +96,7 @@ const Form = () => {
         ))}
         <button
           type="submit"
-          className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-blue-500 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+          className="w-full py-2 px-4 border border-transparent rounded-md shadow-sm text-white bg-pink-500 hover:bg-pink-600 focus:outline-none focus:ring-2 focus:ring-pink-500 focus:ring-opacity-50"
         >
           Submit
         </button>
