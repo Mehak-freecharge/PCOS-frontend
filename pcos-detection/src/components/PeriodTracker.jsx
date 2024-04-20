@@ -9,11 +9,14 @@ const PeriodTracker = () => {
 
   const handleCalculate = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/calculate", {
-        startDate,
-        cycleLength,
-        periodLength,
-      });
+      const response = await axios.post(
+        "http://localhost:5000/api/v1/users/calculate",
+        {
+          startDate,
+          cycleLength,
+          periodLength,
+        }
+      );
       setResults(response.data);
     } catch (error) {
       console.error("Error calculating:", error);
