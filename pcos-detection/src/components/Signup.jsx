@@ -33,6 +33,19 @@ const Signup = () => {
           body: formData,
         }
       );
+      const responseData = await response.json(); // Parse response data
+
+      if (!response.ok) {
+        if (response.status === 409) {
+          // User with same username or email already exists
+          setError("User with the same username or email already exists");
+        } else {
+          toast.error("Error occured while registering");
+        }
+        setLoading(false);
+        return;
+      }
+
       const userData = {
         username,
         email,
@@ -40,30 +53,18 @@ const Signup = () => {
       };
       console.log(userData);
       login(userData);
-      if (response.ok) {
-        toast.success("Successfully registered the user");
-        setTimeout(() => {
-          navigate("/");
-        }, 1500);
-      } else {
-        toast.error("Error occured while registering");
-        return;
-      }
+      toast.success("Successfully registered the user");
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
     } catch (error) {
       console.log(error);
+      toast.error("Error occured while registering");
+    } finally {
+      setLoading(false);
     }
-
-    //   if (!response.ok) {
-    //     throw new Error("Signup failed");
-    //   }
-    //   response.data && window.location.replace("/login");
-    // } catch (error) {
-    //   setError("Signup failed. Please try again later.");
-    // } finally {
-    //   setLoading(false);
-    // }
-    console.log({ username, email, password, profileImage });
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center w-full lg:pr-40 gap-10">
       <div className="lg:block hidden">
