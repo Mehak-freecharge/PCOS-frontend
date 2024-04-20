@@ -39,7 +39,7 @@ const Explore = () => {
     <>
       <div className="w-full lg:px-20">
         <div className="">
-          <h1 className="text-3xl font-bold text-gray-700">
+          <h1 className="text-5xl text-gray-700">
             Explore topics related to PCOS
           </h1>
           <div className="mt-5">
