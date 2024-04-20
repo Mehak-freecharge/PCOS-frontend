@@ -27,7 +27,7 @@ const Navbar = () => {
           <img
             src={user?.profileImage || user?.data?.user?.profileImage}
             alt="Profile"
-            className="lg:block hidden lg:rounded-full"
+            className="lg:block hidden lg:rounded-full h-10 w-10 object-cover mt-5"
           />
           <Link
             to="/form"
