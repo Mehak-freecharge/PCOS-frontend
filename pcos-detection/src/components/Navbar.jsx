@@ -27,17 +27,17 @@ const Navbar = () => {
           <img
             src={user?.profileImage || user?.data?.user?.profileImage}
             alt="Profile"
-            className="lg:block hidden lg:rounded-full h-10 w-10 object-cover mt-5"
+            className="lg:block hidden lg:rounded-full h-10 w-10 object-cover mt-2"
           />
           <Link
             to="/form"
-            className="bg-white border-2 border-black hover:bg-[#FF92A5] hover:text-black hover:border-black py-3 px-4 rounded-full mb-1 cursor-pointer lg:py-5 lg:px-6"
+            className="bg-white border-2 hover:bg-[#FF92A5] hover:text-black py-3 px-4 rounded-full mb-1 cursor-pointer lg:py-3 lg:px-3"
           >
             Predict PCOS
           </Link>
           <button
             onClick={logout}
-            className="bg-white border-2 border-black hover:bg-[#FF92A5] hover:text-black hover:border-black py-3 px-6 mb-1 rounded-full cursor-pointer lg:py-4 lg:px-10"
+            className="bg-white border-2 hover:bg-[#FF92A5] hover:text-black py-3 px-6 mb-1 rounded-full cursor-pointer lg:py-3 lg:px-6"
           >
             Logout
           </button>
@@ -46,13 +46,13 @@ const Navbar = () => {
         <div className="flex flex-row gap-3 mr-6">
           <Link
             to="/login"
-            className="bg-white border-2 border-black hover:bg-[#FF92A5] hover:text-black hover:border-black py-3 px-6 rounded-full mb-1 md:mb-0 md:mr-4 cursor-pointer"
+            className="bg-white border-2  hover:bg-[#FF92A5] hover:text-black py-3 px-6 rounded-full mb-1 md:mb-0 md:mr-4 cursor-pointer"
           >
             Login
           </Link>
           <Link
             to="/register"
-            className="bg-white border-2 border-black hover:bg-[#FF92A5] hover:text-black hover:border-black py-3 px-6 rounded-full cursor-pointer"
+            className="bg-white border-2 hover:bg-[#FF92A5] hover:text-black py-3 px-6 rounded-full cursor-pointer"
           >
             Signup
           </Link>
