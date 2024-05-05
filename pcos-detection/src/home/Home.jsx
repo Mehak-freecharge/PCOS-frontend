@@ -8,6 +8,7 @@ import Contact from "../components/Contact";
 import React, { useEffect, useRef, useState } from "react";
 import DocAsst from "../components/DocAsst";
 import PeriodTracker from "../components/PeriodTracker";
+import Dashboard from './../components/Dashboard';
 
 const RevealOnScroll = ({ children }) => {
   const [isVisible, setIsVisible] = useState(false);
@@ -58,6 +59,11 @@ const Home = () => {
       <RevealOnScroll>
         <div id="Lifestyle">
           <Lifestyle />
+        </div>
+      </RevealOnScroll>
+      <RevealOnScroll>
+        <div id="Dashboard">
+          <Dashboard />
         </div>
       </RevealOnScroll>
       <RevealOnScroll>

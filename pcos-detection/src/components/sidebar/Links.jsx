@@ -30,6 +30,7 @@ const Links = () => {
     "Explore",
     "Period Tracker",
     "Lifestyle",
+    "Dashboard",
     "Doctor",
     "Contact",
   ];
