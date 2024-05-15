@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 const Form = () => {
   const [formData, setFormData] = useState({
-    "AMH(ng/mL)": "23",
-    "II beta-HCG(mIU/mL)": "12",
+    "AMH(ng/mL) (Anti-Mullerian Hormone - Person's egg count)": "23",
+    "II beta-HCG(mIU/mL) (Detect whether you are pregnant or not)": "12",
     "I beta-HCG(mIU/mL)": "3",
     "Follicle No. (R)": "13",
     "Follicle No. (L)": "15",
@@ -19,26 +19,31 @@ const Form = () => {
     "Waist(inch)": "28",
     "Hip(inch)": "28",
     "Avg. F size (L) (mm)": "20",
-    "Endometrium (mm)": "16",
+    "Endometrium (mm) (The layer of tissue that lines the uterus)": "16",
     "Avg. F size (R) (mm)": "18",
     "Pulse rate(bpm)": "89",
     "Hb(g/dl)": "13",
     "Vit D3 (ng/mL)": "15",
     "Height(Cm)": "169",
     "Reg.Exercise(Y/N)": "1",
-    "LH(mIU/mL)": "12",
-    "RBS(mg/dl)": "5",
+    "LH(mIU/mL) (LH test helps to find the cause of infertility)": "12",
+    "RBS(mg/dl) (Random blood sugar test) ": "5",
     "BP Diastolic (mmHg)": "72",
-    "RR (breaths/min)": "18",
-    "Blood Group": "11",
+    "RR (breaths/min) (Respiration Rate)": "18",
+    "Blood Group -- (A+: 11, A-: 12, B+: 13, B-: 14, O+: 15, O-:16, AB+: 17, AB-: 18)":
+      "11",
     "Waist:Hip Ratio": "18",
     "BP Systolic (mmHg)": "120",
-    "PRL(ng/mL)": "1",
-    "TSH (mIU/L)": "12",
-    "FSH/LH": "11",
+    "PRL(ng/mL) (Measures the level of prolactin in a sample of your blood)":
+      "1",
+    "TSH (mIU/L) (Measures the amount of thyroid stimulating hormone in your blood)":
+      "12",
+    "FSH/LH (FSH Aand LH trigger their ovaries to begin producing estrogen)":
+      "11",
     "Pregnant(Y/N)": "0",
-    "FSH(mIU/mL)": "11",
-    "PRG(ng/mL)": "15",
+    "FSH(mIU/mL) (Follicle stimulating hormone, FSH-Vaginal bleeding FSH-Menopause)":
+      "11",
+    "PRG(ng/mL) (Pregnancy test)": "15",
     "No. of aborptions": "2",
     "Marraige Status (Yrs)": "1",
     "Age (yrs)": "23",
